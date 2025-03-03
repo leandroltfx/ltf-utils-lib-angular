@@ -3,5 +3,4 @@
  */
 
 export * from './lib/ltf-utils.service';
-export * from './lib/ltf-utils.component';
 export * from './lib/ltf-utils.module';
