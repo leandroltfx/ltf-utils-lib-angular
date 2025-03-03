@@ -1,14 +1,8 @@
 import { NgModule } from '@angular/core';
 
-import { LtfUtilsComponent } from './ltf-utils.component';
-
 @NgModule({
-  declarations: [
-    LtfUtilsComponent
-  ],
+  declarations: [],
   imports: [],
-  exports: [
-    LtfUtilsComponent
-  ]
+  exports: []
 })
 export class LtfUtilsModule { }
