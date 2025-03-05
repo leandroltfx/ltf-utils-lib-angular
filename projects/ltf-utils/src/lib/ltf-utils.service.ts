@@ -50,4 +50,19 @@ export class LtfUtilsService {
     letters[0] = letters[0].toUpperCase();
     return letters.join('');
   }
+
+  /**
+   * 
+   * @param word Palavra ou frase
+   * @param length Ponto onde a palavra ou frase será cortada
+   * @returns A mesma palavra ou frase, porém cortada na parte desejada e com ellipsis adicionada no final
+   */
+  addEllipsis(
+    word: string,
+    length: number,
+  ): string {
+    
+    word = word.substring(0, length);
+    return `${word}...`;
+  }
 }

@@ -138,4 +138,25 @@ describe('LtfUtilsService', () => {
       expect(result).toBe('A');
     });
   });
+
+  describe('addEllipsis', () => {
+
+    it('deve cortar a string no ponto desejado e adicionar ellipsis no final', () => {
+
+      const result = service.addEllipsis('palavra', 5);
+      expect(result).toBe('palav...');
+    });
+
+    it('deve retornar apenas a ellipsis se toda a string for cortada', () => {
+
+      const result = service.addEllipsis('palavra', 0);
+      expect(result).toBe('...');
+    });
+
+    it('deve retornar apenas a ellipsis se for passado uma string vazia', () => {
+
+      const result = service.addEllipsis('palavra', 0);
+      expect(result).toBe('...');
+    });
+  });
 });
