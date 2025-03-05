@@ -32,4 +32,22 @@ export class LtfUtilsService {
       return `${day}${separator}${month}${separator}${year}`;
     }
   }
+
+  /**
+   * 
+   * @param word Uma letra, palavra ou frase
+   * @returns A mesma string, porém com a primeira letra em maiúsculo e o resto em minúsculo, ou, em caso de uma frase, a primeira letra da primeira palavra em maiúsculo e o resto das letras do restante das palavras em minúsculo
+   */
+  public capitalize(
+    word: string
+  ) {
+
+    if(!word) {
+      return '';
+    }
+
+    let letters = word.toLowerCase().split('');
+    letters[0] = letters[0].toUpperCase();
+    return letters.join('');
+  }
 }

@@ -111,4 +111,31 @@ describe('LtfUtilsService', () => {
     });
 
   });
+
+  describe('capitalize', () => {
+
+    it('deve transformar a primeira letra de uma palavra em letra maiúscula e as outras em minúsculas', () => {
+
+      const result = service.capitalize('paLAvrA');
+      expect(result).toBe('Palavra');
+    });
+
+    it('deve transformar a primeira letra da primeira palavra de uma frase em maiúscula e as letras das palavras restantes em minúsculas', () => {
+
+      const result = service.capitalize('priMeira pALAvra Da FrasE');
+      expect(result).toBe('Primeira palavra da frase');
+    });
+
+    it('deve retornar uma string vazia se receber uma string vazia', () => {
+
+      const result = service.capitalize('');
+      expect(result).toBe('');
+    });
+
+    it('deve transformar a única letra passada por parâmetro em maiúsculo', () => {
+
+      const result = service.capitalize('a');
+      expect(result).toBe('A');
+    });
+  });
 });
