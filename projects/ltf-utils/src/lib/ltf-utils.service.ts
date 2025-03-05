@@ -40,15 +40,15 @@ export class LtfUtilsService {
    */
   public capitalize(
     word: string
-  ) {
-
-    if(!word) {
+  ): string {
+    try {
+      let letters = word.toLowerCase().split('');
+      letters[0] = letters[0].toUpperCase();
+      return letters.join(''); 
+    } catch (error) {
+      console.error('Informe uma string');
       return '';
     }
-
-    let letters = word.toLowerCase().split('');
-    letters[0] = letters[0].toUpperCase();
-    return letters.join('');
   }
 
   /**

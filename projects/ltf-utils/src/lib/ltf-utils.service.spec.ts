@@ -126,10 +126,14 @@ describe('LtfUtilsService', () => {
       expect(result).toBe('Primeira palavra da frase');
     });
 
-    it('deve retornar uma string vazia se receber uma string vazia', () => {
+    it('deve retornar uma string vazia se receber uma string vazia e logar um erro', () => {
+
+      const errorSpy = spyOn(console, 'error');
 
       const result = service.capitalize('');
+
       expect(result).toBe('');
+      expect(errorSpy).toHaveBeenCalledWith('Informe uma string');
     });
 
     it('deve transformar a única letra passada por parâmetro em maiúsculo', () => {
