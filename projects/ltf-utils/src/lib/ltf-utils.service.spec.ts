@@ -111,4 +111,56 @@ describe('LtfUtilsService', () => {
     });
 
   });
+
+  describe('capitalize', () => {
+
+    it('deve transformar a primeira letra de uma palavra em letra maiúscula e as outras em minúsculas', () => {
+
+      const result = service.capitalize('paLAvrA');
+      expect(result).toBe('Palavra');
+    });
+
+    it('deve transformar a primeira letra da primeira palavra de uma frase em maiúscula e as letras das palavras restantes em minúsculas', () => {
+
+      const result = service.capitalize('priMeira pALAvra Da FrasE');
+      expect(result).toBe('Primeira palavra da frase');
+    });
+
+    it('deve retornar uma string vazia se receber uma string vazia e logar um erro', () => {
+
+      const errorSpy = spyOn(console, 'error');
+
+      const result = service.capitalize('');
+
+      expect(result).toBe('');
+      expect(errorSpy).toHaveBeenCalledWith('Informe uma string');
+    });
+
+    it('deve transformar a única letra passada por parâmetro em maiúsculo', () => {
+
+      const result = service.capitalize('a');
+      expect(result).toBe('A');
+    });
+  });
+
+  describe('addEllipsis', () => {
+
+    it('deve cortar a string no ponto desejado e adicionar ellipsis no final', () => {
+
+      const result = service.addEllipsis('palavra', 5);
+      expect(result).toBe('palav...');
+    });
+
+    it('deve retornar apenas a ellipsis se toda a string for cortada', () => {
+
+      const result = service.addEllipsis('palavra', 0);
+      expect(result).toBe('...');
+    });
+
+    it('deve retornar apenas a ellipsis se for passado uma string vazia', () => {
+
+      const result = service.addEllipsis('palavra', 0);
+      expect(result).toBe('...');
+    });
+  });
 });
