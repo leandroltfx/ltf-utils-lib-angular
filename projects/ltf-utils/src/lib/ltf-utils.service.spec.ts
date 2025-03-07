@@ -1,6 +1,11 @@
+import { LOCALE_ID } from '@angular/core';
+import ptBr from '@angular/common/locales/pt';
 import { TestBed } from '@angular/core/testing';
+import { registerLocaleData } from '@angular/common';
 
 import { LtfUtilsService } from './ltf-utils.service';
+
+registerLocaleData(ptBr);
 
 describe('LtfUtilsService', () => {
   let service: LtfUtilsService;
@@ -8,7 +13,8 @@ describe('LtfUtilsService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
-        LtfUtilsService
+        LtfUtilsService,
+        { provide: LOCALE_ID, useValue: 'pt-BR' }
       ]
     });
     service = TestBed.inject(LtfUtilsService);
@@ -161,6 +167,22 @@ describe('LtfUtilsService', () => {
 
       const result = service.addEllipsis('palavra', 0);
       expect(result).toBe('...');
+    });
+  });
+
+  describe('formatCurrencyBrl', () => {
+
+    it('deve transformar um valor em um formato de moeda brasileira', () => {
+
+      const result = service.formatCurrencyBrl(50);
+      const result2 = service.formatCurrencyBrl(1250);
+      const result3 = service.formatCurrencyBrl(0.50);
+
+      // O formatCurrency do @angular/commons pode incluir um espaço entre o símbolo da moeda e o número
+      // O replace remove qualquer espaço invisível na string formatada
+      expect(result.replace(/\s/g, '')).toBe('R$50,00');
+      expect(result2.replace(/\s/g, '')).toBe('R$1.250,00');
+      expect(result3.replace(/\s/g, '')).toBe('R$0,50');
     });
   });
 });

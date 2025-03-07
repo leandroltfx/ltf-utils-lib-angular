@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { formatCurrency } from '@angular/common';
 
 import { DateSeparator } from './types/date-separator.type';
 
@@ -64,5 +65,9 @@ export class LtfUtilsService {
     
     word = word.substring(0, length);
     return `${word}...`;
+  }
+
+  public formatCurrencyBrl(value: number): string {
+    return formatCurrency(value, 'pt-BR', 'R$');
   }
 }
