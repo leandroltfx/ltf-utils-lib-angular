@@ -57,7 +57,7 @@ export class LtfUtilsService {
    * @param length Ponto onde a palavra ou frase será cortada
    * @returns A mesma palavra ou frase, porém cortada na parte desejada e com ellipsis adicionada no final
    */
-  addEllipsis(
+  public addEllipsis(
     word: string,
     length: number,
   ): string {
