@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { formatCurrency } from '@angular/common';
 
 import { DateSeparator } from './types/date-separator.type';
 
@@ -57,12 +58,16 @@ export class LtfUtilsService {
    * @param length Ponto onde a palavra ou frase será cortada
    * @returns A mesma palavra ou frase, porém cortada na parte desejada e com ellipsis adicionada no final
    */
-  addEllipsis(
+  public addEllipsis(
     word: string,
     length: number,
   ): string {
     
     word = word.substring(0, length);
     return `${word}...`;
+  }
+
+  public formatCurrencyBrl(value: number): string {
+    return formatCurrency(value, 'pt-BR', 'R$');
   }
 }
